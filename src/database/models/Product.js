@@ -1,6 +1,6 @@
-const db=require("./connector");
+const db=require("../connector");
 const sequelize=require("sequelize");
-const Product=db.define(
+module.exports=db.define(
     "product",
     {
       "name": {
@@ -9,8 +9,6 @@ const Product=db.define(
       "price": {
            type:sequelize.DOUBLE
       }
-       
-       
 
     }
 )

@@ -1,6 +1,6 @@
-const db=require("./connector");
+const db=require("../connector");
 const sequelize=require("sequelize");
-const property=db.define(
+module.exports=db.define(
     "property",
     {
       "color": {
@@ -9,9 +9,8 @@ const property=db.define(
       "weight": {
            type:sequelize.DOUBLE
       }
-      "size": {
-        type:sequelize.DOUBLE
-   }
+      
+   
        
        
 
