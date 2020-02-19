@@ -1,27 +1,28 @@
 const express = require('express');
 const bodyParser =require('body-parser');
 const db= require('./database/connector')
+const router =require('./api')
 
 const app = express();
-const port = 3000;
+const port = 3500;
 app.use(bodyParser.json())
-
 
 //db connection
 
 db.authenticate().then(() =>{
     console.log('DB Connected');
+    require('./database/models/schemaintializer')
 }).catch((err) => {console.log(err);})
 
 
 // callbacks
 
-app.get('/name',(req,res) => {res.send('Hi Ravi')})
+app.get('/name',(req,res) => {res.send('halo')})
 app.get('/',(req,res) => {res.send(`Server is running on ${port}`)})
 
 
-app.post('/view', (req,res) => {
-    /*
+/*app.post('/view', (req,res) => {
+    
     [
     {
         "name": "Ravi",
@@ -67,8 +68,7 @@ app.post('/slice',(req,res) => {
     data=req.body.data;
     out=data.slice(0,3)+ data.slice(data.indexOf(':'));
     res.json({out})
-})*/
-
+})
 app.post('/test',(req,res) => {console.log(req.body);res.send("status:'Executed'")})
-
+app.put('/test',(req,res) => {console.log(req.body);res.send("status:'Executed'")})*/
 app.listen(port, () => {console.log(`Server is running on ${port}`)});
